@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="section pb_20">
+        <div class="row" *ngIf="collections?.length">
+            <div class="col-md-6" *ngFor="let collection of collections">
+                <div class="single_banner">
+                    <img [src]="collection.imageUrl" alt="shop_banner_img1" />
+                    <div class="single_banner_info">
+                        <h5 class="single_bn_title1">{{ collection.titre1 }}</h5>
+                        <h3 class="single_bn_title">{{ collection.titre2 }}</h3>
+                        <a class="single_bn_link" [href]="collection.btn_link">{{ collection.btn_text }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="!collections?.length">
+            <div class="col-md-6">
+                <app-awaitloading></app-awaitloading>
+            </div>
+            <div class="col-md-6">
+                <app-awaitloading></app-awaitloading>
+            </div>
+        </div>
+    </div>
+</div>

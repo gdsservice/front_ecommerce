@@ -1,0 +1,36 @@
+<div class="banner_section slide_medium shop_banner_slider staggered-animation-wrap">
+    <div id="carouselExampleControls" data-bs-ride="carousel" class="carousel slide carousel-fade light_arrow">
+        <div class="carousel-inner">
+            <div class="carousel-item background_bg" *ngFor="let banner of banners; let i = index"
+                [class.active]="i === 0" [attr.data-img-src]="banner.imageUrl"
+                [ngStyle]="{'background-image': 'url(' + banner.imageUrl + ')'}">
+                <div class="banner_slide_content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-7 col-9">
+                                <div class="banner_content overflow-hidden">
+                                    <h5 class="mb-3 staggered-animation font-weight-light animated slideInLeft"
+                                        style="animation-delay: 0.5s; opacity: 1;">
+                                        {{ banner.titre1 }}
+                                    </h5>
+                                    <h2 class="staggered-animation animated slideInLeft"
+                                        style="animation-delay: 1s; opacity: 1;">
+                                        {{ banner.titre2 }}
+                                    </h2>
+                                    <a [href]=" banner.btn_link "
+                                        class="btn btn-fill-out rounded-0 staggered-animation text-uppercase animated slideInLeft"
+                                        style="animation-delay: 1.5s; opacity: 1;">
+                                        {{ banner.btn_text }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><a href="#carouselExampleControls" role="button" data-bs-slide="prev" class="carousel-control-prev"><i
+                class="ion-chevron-left"></i></a><a href="#carouselExampleControls" role="button" data-bs-slide="next"
+            class="carousel-control-next"><i class="ion-chevron-right"></i></a>
+
+    </div>
+</div>
