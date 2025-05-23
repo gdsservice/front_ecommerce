@@ -63,34 +63,36 @@ export class HomeComponent {
     },
   ];
 
-  products?: Array<ProduitDAOModel[]> = [];
+  // products?: Array<ProduitDAOModel[]> = [];
+  products: { [key: string]: ProduitDAOModel[] } = {};
+
+  isLoading: boolean = true;
 
 
 
   constructor(private produitService: ProductService) { }
 
   async ngOnInit() {
-    
+
     this.getProducts()
   }
 
   async getProducts() {
     const queries = [
-      "nouveaute=true",
-      "vedette=true",
-      "offreSpeciale=true"
+      { key: 'nouveaute', value: 'nouveaute=true' },
+      { key: 'plusVendu', value: 'plusVendu=true' },
+      { key: 'vedette', value: 'vedette=true' },
+      { key: 'offreSpeciale', value: 'offreSpeciale=true' }
     ];
-  
+
     for (const query of queries) {
-      const productsData: any = await lastValueFrom(this.produitService.searchProduit('product', query));
+      const productsData = await lastValueFrom(this.produitService.searchProduit(query.value));
+      this.products[query.key] = productsData;
       console.log(productsData);
-      if (productsData) {
-        const currentProductsData: any = productsData;
-        this.products?.push(currentProductsData);
-      }
     }
+
   }
-  
+
 
 
 

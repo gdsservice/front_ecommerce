@@ -1,4 +1,4 @@
-import {CategorieModel} from "./categorie.model";
+import { CategorieModel } from "./categorie.model ";
 
 export interface ProduitModel{
   idProd: string | null,

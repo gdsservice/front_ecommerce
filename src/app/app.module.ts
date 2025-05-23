@@ -30,6 +30,7 @@ import { FormatImageUrlPipe } from './pipes/format-image-url.pipe';
 import { TabProductContainerComponent } from './components/tab-product-container/tab-product-container.component';
 import { CommonModule } from '@angular/common';
 import { FormatPricePipe } from './pipes/format-price.pipe';
+import { FormatSoldeRatePipe } from './pipes/format-solde-rate.pipe';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { FormatPricePipe } from './pipes/format-price.pipe';
     ProductItemComponent,
     FormatImageUrlPipe,
     TabProductContainerComponent,
-    FormatPricePipe
+    FormatPricePipe,
+    FormatSoldeRatePipe
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
-import {CategorieModel} from "./categorie.model";
+import { CategorieModel } from "./categorie.model ";
+
 
 export interface ProduitDAOModel{
   idProd: string | null,

@@ -1,0 +1,5 @@
+.dropdown-item{
+    overflow: hidden;
+    padding-right: 10px;
+    text-overflow: ellipsis;
+}

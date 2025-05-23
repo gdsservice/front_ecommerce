@@ -41,8 +41,12 @@ const routes: Routes = [
     path: "contact",
     component: ContactComponent
   },
+  //   {
+  //   path: "produitDAO/:idProd",
+  //   component: SingleProductComponent
+  // },
   {
-    path: "product/:slug",
+    path: "produitDAO/:slug",
     component: SingleProductComponent
   },
   {

@@ -18,7 +18,7 @@ export class ProductService {
   }
 
   // Méthode pour rechercher des produits avec des paramètres
-  public searchProduit(entity: string, query: string): Observable<Array<ProduitDAOModel>> {
+  public searchProduit(query: string): Observable<Array<ProduitDAOModel>> {
     return this.http.get<Array<ProduitDAOModel>>(`${environment.backendHost}/produit/recherche?${query}`);
 }
 

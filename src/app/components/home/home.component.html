@@ -20,31 +20,37 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a id="vedette-tab" data-bs-toggle="tab" href="#vedette" role="tab"
-                                    aria-controls="sellers" aria-selected="false" class="nav-link">Meilleures Ventes
+                                <a id="plusVendu-tab" data-bs-toggle="tab" href="#plusVendu" role="tab"
+                                    aria-controls="sellers" aria-selected="false" class="nav-link">Plus Vendu
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a id="offreSpeciale-tab" data-bs-toggle="tab" href="#offreSpeciale" role="tab"
-                                    aria-controls="featured" aria-selected="false" class="nav-link">En vedette
+                                    aria-controls="featured" aria-selected="false" class="nav-link">Offre Speciale
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a id="vedette-tab" data-bs-toggle="tab" href="#vedette" role="tab"
+                                    aria-controls="sellers" aria-selected="false" class="nav-link">En Vedette
+                                </a>
+                            </li>
+                            
                         </ul>
                     </div>
                     <div class="tab-content">
                         <div id="nouveaute" role="tabpanel" aria-labelledby="nouveaute-tab"
                             class="tab-pane fade show active">
-                        <app-tab-product-container [produitDAO] = "products![0]"></app-tab-product-container>
+                        <app-tab-product-container [produitDAO]="products['nouveaute']"></app-tab-product-container>
                         </div>
-                        <div id="vedette" role="tabpanel" aria-labelledby="vedette-tab" class="tab-pane fade">
-                            <app-tab-product-container [produitDAO] = "products![1]"></app-tab-product-container>
+                        <div id="plusVendu" role="tabpanel" aria-labelledby="plusVendu-tab" class="tab-pane fade">
+                            <app-tab-product-container [produitDAO]="products['plusVendu']"></app-tab-product-container>
                         </div>
                         <div id="offreSpeciale" role="tabpanel" aria-labelledby="offreSpeciale-tab" class="tab-pane fade">
-                            <app-tab-product-container [produitDAO] = "products![2]"></app-tab-product-container>
+                            <app-tab-product-container [produitDAO]="products['offreSpeciale']"></app-tab-product-container>
                         </div>
-                        <!-- <div id="special" role="tabpanel" aria-labelledby="special-tab" class="tab-pane fade">
-                            <app-tab-product-container [produitDAO] = "products![3]"></app-tab-product-container>
-                        </div> -->
+                        <div id="vedette" role="tabpanel" aria-labelledby="vedette-tab" class="tab-pane fade">
+                            <app-tab-product-container [produitDAO]="products['vedette']"></app-tab-product-container>
+                        </div>
                     </div>
                 </div>
             </div>

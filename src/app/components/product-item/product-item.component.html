@@ -1,6 +1,6 @@
-<div class="product">
-    <div class="product_img"><a [routerLink]="['/','product',produitDAO?.slug]">
-            <img alt="product_img1" [src]="produitDAO?.imageUrl"></a>  
+<div class="product" >
+    <div class="product_img">
+            <img alt="product_img1" [src]="produitDAO?.imageUrl">  
         <div class="product_action_box">
             <ul class="list_none pr_action_btn">
                 <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Ajouter au panier </a>
@@ -11,19 +11,20 @@
             </ul>
         </div>
     </div>
-    <div class="product_info">
+    
+    <div class="product_info" (click)="naviguerVersDetailProduit(produitDAO?.slug ?? null)" style="cursor: pointer;">
         <h6 class="product_title"><a ng-reflect-router-link="#"
-                href=""> {{produitDAO?.designation}}
+                [routerLink]="['/produitDAO', produitDAO?.slug]"> {{produitDAO?.designation}}
             </a></h6>
         <div class="product_price">
             <span class="price">
-                {{produitDAO?.prixUnitaire}} f
+                {{produitDAO?.prixUnitaire }} f
             </span>
             <del>
                 {{produitDAO?.prixRegulier}} f
             </del>
             <div class="on_sale">
-                <span>35% Off</span>
+                <span> {{ produitDAO | formatSoldeRate }} de réduction</span>
             </div>
         </div>
         <div class="rating_wrap">
