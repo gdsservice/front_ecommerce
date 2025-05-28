@@ -17,14 +17,23 @@ export class ProductService {
     return this.http.get<Array<ProduitDAOModel>>(`${environment.backendHost}/produit/listeProd`);
   }
 
+  public getProduitBySlug(slug: string): Observable<ProduitDAOModel> {
+    return this.http.get<ProduitDAOModel>(`${environment.backendHost}/produit/slug/${slug}`);
+  }
+
   // Méthode pour rechercher des produits avec des paramètres
   public searchProduit(query: string): Observable<Array<ProduitDAOModel>> {
     return this.http.get<Array<ProduitDAOModel>>(`${environment.backendHost}/produit/recherche?${query}`);
 }
 
-  getImageUrl(idProd: string): string {
-    return `${environment.backendHost}/produit/image/${idProd}`;
+  getImageUrls(idProd: string, count: number): string[] {
+  const urls: string[] = [];
+  for (let i = 0; i < count; i++) {
+    urls.push(`${environment.backendHost}/images/produit/${idProd}?index=${i}`);
   }
+  return urls;
+}
+
 
   
 }

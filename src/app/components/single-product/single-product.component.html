@@ -5,60 +5,32 @@
                 <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
                     <div class="product-image">
                         <div class="product_img_box"><img id="product_img" alt="product_img1"
-                                src="http://localhost:3000/assets/files/culottes/culotte_8/10518988473111520886581236853833613928085898971684087225041.webp"
-                                data-zoom-image="http://localhost:3000/assets/files/culottes/culotte_8/10518988473111520886581236853833613928085898971684087225041.webp"><a
+                                [src]="mainImageUrl" [attr.data-zoom-image]="mainImageUrl"><a
                                 title="Zoom" class="product_img_zoom"><span class="linearicons-zoom-in"></span></a>
                         </div>
                         <div id="pr_item_gallery" data-slides-to-show="4" data-slides-to-scroll="1"
                             data-infinite="false"
                             class="product_gallery_item slick_slider slick-initialized slick-slider">
                             <div aria-live="polite" class="slick-list draggable">
-                                <div class="slick-track" role="listbox" style="opacity: 1; width: 556px; left: 0px;">
-                                    <div class="item slick-slide slick-current slick-active" data-slick-index="0"
-                                        aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide20"
-                                        style="width: 129px;"><a href="#" class="product_gallery_item active"
-                                            data-image="http://localhost:3000/assets/files/culottes/culotte_8/10518988473111520886581236853833613928085898971684087225041.webp"
-                                            data-zoom-image="http://localhost:3000/assets/files/culottes/culotte_8/10518988473111520886581236853833613928085898971684087225041.webp"
-                                            tabindex="0"><img alt="product_small_img1"
-                                                src="http://localhost:3000/assets/files/culottes/culotte_8/10518988473111520886581236853833613928085898971684087225041.webp"></a>
-                                    </div>
-                                    <div class="item slick-slide slick-active" data-slick-index="1" aria-hidden="false"
-                                        tabindex="-1" role="option" aria-describedby="slick-slide21"
-                                        style="width: 129px;"><a href="#" class="product_gallery_item active"
-                                            data-image="http://localhost:3000/assets/files/culottes/culotte_8/8858030309010591138243975967438607632572228411684087225104.webp"
-                                            data-zoom-image="http://localhost:3000/assets/files/culottes/culotte_8/8858030309010591138243975967438607632572228411684087225104.webp"
-                                            tabindex="0"><img alt="product_small_img1"
-                                                src="http://localhost:3000/assets/files/culottes/culotte_8/8858030309010591138243975967438607632572228411684087225104.webp"></a>
-                                    </div>
-                                    <div class="item slick-slide slick-active" data-slick-index="2" aria-hidden="false"
-                                        tabindex="-1" role="option" aria-describedby="slick-slide22"
-                                        style="width: 129px;"><a href="#" class="product_gallery_item active"
-                                            data-image="http://localhost:3000/assets/files/culottes/culotte_8/261752098622508939994245011589886325606197071684087225130.webp"
-                                            data-zoom-image="http://localhost:3000/assets/files/culottes/culotte_8/261752098622508939994245011589886325606197071684087225130.webp"
-                                            tabindex="0"><img alt="product_small_img1"
-                                                src="http://localhost:3000/assets/files/culottes/culotte_8/261752098622508939994245011589886325606197071684087225130.webp"></a>
-                                    </div>
-                                    <div class="item slick-slide slick-active" data-slick-index="3" aria-hidden="false"
-                                        tabindex="-1" role="option" aria-describedby="slick-slide23"
-                                        style="width: 129px;"><a href="#" class="product_gallery_item active"
-                                            data-image="http://localhost:3000/assets/files/culottes/culotte_8/15182117027213351040102609654396778225189902031684087225156.webp"
-                                            data-zoom-image="http://localhost:3000/assets/files/culottes/culotte_8/15182117027213351040102609654396778225189902031684087225156.webp"
-                                            tabindex="0"><img alt="product_small_img1"
-                                                src="http://localhost:3000/assets/files/culottes/culotte_8/15182117027213351040102609654396778225189902031684087225156.webp"></a>
-                                    </div>
+                                <div class="item slick-slide slick-current slick-active"
+                                    *ngFor="let imageUrl of imageUrls; let i = index" [attr.data-slick-index]="i"
+                                    aria-hidden="false" tabindex="-1" role="option" style="width: 129px;">
+                                    <a href="#" class="product_gallery_item" [attr.data-zoom-image]="imageUrl">
+                                        <img alt="product_small_img{{i}}" [src]="imageUrl">
+                                    </a>
                                 </div>
-                            </div><!--bindings={
-  "ng-reflect-ng-for-of": "http://localhost:3000/assets/f"
-}-->
+
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="pr_detail">
                         <div class="product_description">
-                            <h4 class="product_title"><a href="#">Culotte en dentelle</a></h4>
-                            <div class="product_price"><span class="price">58,43&nbsp;€</span><del>291,58&nbsp;€</del>
-                                <div class="on_sale"><span>35% Off</span></div>
+                            <h4 class="product_title"><a href="#">{{produitDAO?.designation}}</a></h4>
+                            <div class="product_price"><span class="price">{{produitDAO?.prixUnitaire }}
+                                    f</span><del>{{produitDAO?.prixRegulier}} f</del>
+                                <div class="on_sale"><span>{{ produitDAO ? (produitDAO | formatSoldeRate) : '' }} de réduction</span></div>
                             </div>
                             <div class="rating_wrap">
                                 <div class="rating">
@@ -107,9 +79,10 @@
                         <hr><!--bindings={
   "ng-reflect-ng-if": "false"
 }-->
-                        <ul class="product-meta">
+                        <ul class="product-meta" *ngIf="produitDAO">
                             <li>SKU: <a href="#">BE45VGRT</a></li>
-                            <li>Category: <a href="#">Culotes </a></li>
+                            <li>Category: <a href="#"
+                                    class="text-uppercase">{{produitDAO.categorieStockProdDTO.nom}}</a></li>
                             <li>Tags: <a href="#" rel="tag">Cloth</a>, <a href="#" rel="tag">printed</a></li>
                         </ul>
                         <div class="product_share"><span>Share:</span>
@@ -156,7 +129,7 @@
                                     <h5 class="product_tab_title">2 Review For <span>Blue Dress For Woman</span></h5>
                                     <ul class="list_none comment_list mt-4">
                                         <li>
-                                            <div class="comment_img"><img src="assets/images/user1.jpg" alt="user1">
+                                            <div class="comment_img"><img src="#" alt="user1">
                                             </div>
                                             <div class="comment_block">
                                                 <div class="rating_wrap">
@@ -247,23 +220,22 @@
                                 <div class="owl-item active" style="width: 264px; margin-right: 20px;">
                                     <div class="item">
                                         <div class="product">
-                                            <div class="product_img"><a href="shop-product-detail.html"><img
-                                                        src="assets/images/product_img1.jpg" alt="product_img1"></a>
+                                            <div class="product_img"><a href="#"><img src="#" alt="product_img1"></a>
                                                 <div class="product_action_box">
                                                     <ul class="list_none pr_action_btn">
                                                         <li class="add-to-cart"><a href="#"><i
                                                                     class="icon-basket-loaded"></i> Add To Cart</a>
                                                         </li>
-                                                        <li><a href="shop-compare.html"><i class="icon-shuffle"></i></a>
+                                                        <li><a href="#"><i class="icon-shuffle"></i></a>
                                                         </li>
-                                                        <li><a href="shop-quick-view.html" class="popup-ajax"><i
+                                                        <li><a href="#" class="popup-ajax"><i
                                                                     class="icon-magnifier-add"></i></a></li>
                                                         <li><a href="#"><i class="icon-heart"></i></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
                                             <div class="product_info">
-                                                <h6 class="product_title"><a href="shop-product-detail.html">Blue Dress
+                                                <h6 class="product_title"><a href="#">Blue Dress
                                                         For Woman</a>
                                                 </h6>
                                                 <div class="product_price"><span

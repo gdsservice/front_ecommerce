@@ -88,7 +88,6 @@ export class HomeComponent {
     for (const query of queries) {
       const productsData = await lastValueFrom(this.produitService.searchProduit(query.value));
       this.products[query.key] = productsData;
-      console.log(productsData);
     }
 
   }

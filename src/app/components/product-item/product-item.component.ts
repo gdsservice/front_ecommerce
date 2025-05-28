@@ -19,7 +19,8 @@ export class ProductItemComponent {
 
   ngOnInit(): void {
     if (this.produitDAO?.idProd) {
-      this.imageUrl = this.productService.getImageUrl(this.produitDAO.idProd);
+      // Supposons 1 image par produit (ou adapte dynamiquement si besoin)
+      this.imageUrl = this.productService.getImageUrls(this.produitDAO.idProd, 1)[0];
       this.produitDAO.imageUrl = this.imageUrl;
     }
   }

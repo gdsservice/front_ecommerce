@@ -18,9 +18,11 @@ export class HeaderComponent {
   }
 
   getCategorie(){
-    this.categorieService.searchCategorie().subscribe({
+    this.categorieService.searchCategorie(1,4).subscribe({
       next: (response) => {
         this.categorieStock = response;
+        console.log('Catégories récupérées avec succès:', this.categorieStock);
+        
       }
     });
   }

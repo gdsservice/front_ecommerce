@@ -11,7 +11,7 @@ export class CategorieService {
 
   constructor(private http: HttpClient) { }
 
-      public searchCategorie(): Observable<Array<CatProduitListModel>> {
-      return this.http.get<Array<CatProduitListModel>>(`${environment.backendHost}/categorie/recherche`);
+      public searchCategorie(min:number=1, max:number=1): Observable<Array<CatProduitListModel>> {
+      return this.http.get<Array<CatProduitListModel>>(`${environment.backendHost}/categorie/recherche?min=${min}&max=${max}`);
   }
 }
