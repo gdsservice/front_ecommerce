@@ -5,4 +5,5 @@ export class CategoryModel {
 	position  : Number = 0
 	updated_at  : Date|null = null
 	created_at  :  Date|null = null
+	slug: String = ""
 }

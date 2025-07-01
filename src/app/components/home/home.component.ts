@@ -17,50 +17,51 @@ export class HomeComponent {
 
   banners: BannerModel[] = [
     {
-      titre1: "21% de réduction sur tous vos achats",
-      titre2: "Univers d'informatique",
-      imageUrl: 'assets/images/banner4.png',
+      titre1: "Profitez d'une connexion longue portée fiable et stable, idéale pour les zones rurales",
+      titre2: "Ubquiti LiteBeam M5",
+      imageUrl: 'assets/imgBG/litebeambaniere.png',
       btn_text: "Acheter maintenant",
-      btn_link: "#",
+      btn_link: "/produitDAO/m5",
     },
     {
-      imageUrl: 'assets/images/banner1.png',
-      titre1: "Bénéficiez jusqu'à 50 % de réduction aujourd'hui seulement !",
-      titre2: "Boutique d'électronique",
+      imageUrl: 'assets/imgBG/hp.png',
+      titre1: "Travaillez et créez sans limites avec le HP EliteBook Core i5, puissant et élégant",
+      titre2: "HP Elitebook Core i5",
       btn_text: "Payer maintenant",
-      btn_link: "#",
+      btn_link: "/produitDAO/hp",
     },
     {
-      imageUrl: 'assets/images/banner3.png',
-      titre1: "Achetez plus et dépensez moins",
-      titre2: "Boutique de matériels divers",
+      imageUrl: 'assets/imgBG/booster.png',
+      titre1: "Démarrez votre véhicule facilement et gonflez vos pneus en toute sécurité et avec plus de confort",
+      titre2: "Booster de véhicule",
       btn_text: "Voir plus",
-      btn_link: "#",
+      btn_link: "/produitDAO/booster",
     },
+
     {
-      imageUrl: 'assets/images/banner2.png',
-      titre1: "Faites passer votre expérience visuelle au niveau supérieur",
-      titre2: "La boutique du monde",
+      imageUrl: 'assets/imgBG/l009.png',
+      titre1: "Améliorez votre confort et vos performances avec des équipements technologiques de pointe conçus pour une expérience immersive et fluide.",
+      titre2: "Microtik hAP L009",
       btn_text: "Acheter maintenant",
-      btn_link: "#",
+      btn_link: "/produitDAO/l009",
     }
   ];
 
   collections: CollectionModel[] = [
     {
-      imageUrl: 'assets/images/shop_banner_img5.jpg',
-      titre1: "Super Sale",
-      titre2: "New Collection",
+      imageUrl: 'assets/imgBG/xiaomi.png',
+      titre1: "Super Prix",
+      titre2: "Xiaomi Tv Box S",
       btn_text: "Voir plus",
-      btn_link: "#",
+      btn_link: "/shop",
     },
     {
-      imageUrl: 'assets/images/shop_banner_img5.jpg',
-      titre1: "Super Sale",
-      titre2: "New Collection",
+      imageUrl: 'assets/imgBG/m5cl.png',
+      titre1: "Super Prix",
+      titre2: "Ubquiti NSM2",
       btn_text: "Voir plus",
-      btn_link: "#",
-    },
+      btn_link: "",
+    }
   ];
 
   // products?: Array<ProduitDAOModel[]> = [];

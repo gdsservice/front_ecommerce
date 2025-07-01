@@ -44,18 +44,16 @@
                 <div class="col-md-6">
                     <div class="text-center text-md-end">
                         <ul class="header_list">
-                            <li><a routerlink="/compare" ng-reflect-router-link="/compare" href="/compare"><i
-                                        class="ti-control-shuffle"></i><span>Comparer</span></a></li>
-                            <li><a routerlink="/wishlist" ng-reflect-router-link="/wishlist" href="/wishlist"><i
-                                        class="ti-heart"></i><span>Favories</span></a></li>
-                            <li><a routerlink="/signin" ng-reflect-router-link="/signin" href="/signin"><i
-                                        class="ti-user"></i><span>Se connecter</span></a>
+                            <li>
+                                <a routerlink="/signin" ng-reflect-router-link="/signin" href="/signin">
+                                    <i class="ti-user"></i><span>Se connecter</span>
+                                </a>
                             </li>
-                            <li><a routerlink="/signup" ng-reflect-router-link="/signup" href="/signup"><i
-                                        class="ti-user"></i><span>S'inscrire</span></a>
+                            <li>
+                                <a routerlink="/signup" ng-reflect-router-link="/signup" href="/signup">
+                                    <i class="ti-user"></i><span>S'inscrire</span>
+                                </a>
                             </li>
-                            <li></li>
-                            <li></li>
                         </ul>
                     </div>
                 </div>
@@ -101,7 +99,8 @@
                                         <ul>
                                             <li class="dropdown-header">{{categorie.categorieStock.nom}}</li>
                                             <li *ngFor="let produit of categorie.produitList">
-                                                <a class="dropdown-item nav-link nav_item" [routerLink]="['/produitDAO', produit.slug]">
+                                                <a class="dropdown-item nav-link nav_item"
+                                                    [routerLink]="['/','produitDAO', produit.slug]">
                                                     {{ produit.designation }}
                                                 </a>
                                             </li>
@@ -112,7 +111,7 @@
                             </div>
                         </li>
                         <li class="dropdown dropdown-mega-menu"><a routerlink="/shop-list" class="nav-link"
-                                ng-reflect-router-link="/shop-list" href="/shop-list">BOUTIQUE</a></li>
+                                routerLink="/shop">BOUTIQUE</a></li>
                         <li><a routerlink="/contact" class="nav-link nav_item" ng-reflect-router-link="/contact"
                                 href="/contact">Contactez nous</a></li>
                     </ul>
@@ -154,56 +153,30 @@
                     </li>
                     <li class="dropdown cart_dropdown"><a href="#" data-bs-toggle="dropdown"
                             class="nav-link cart_trigger"><i class="linearicons-cart"></i><span
-                                class="cart_count">31</span></a>
+                                class="cart_count">{{panier?.quantite}}</span></a>
                         <div class="cart_box dropdown-menu dropdown-menu-right">
                             <ul class="cart_list">
-                                <li><a href="#" class="item_remove"><i class="ion-close"></i></a><a href="#"><img
-                                            width="50" height="50" alt="cart_thumb1" src="">Culotte
-                                        en dentelle</a><span class="cart_quantity"> 11 x
-                                        <span class="cart_amount"><span
-                                                class="price_symbole">23,91&nbsp;€</span></span></span></li>
-                                <li><a href="#" class="item_remove"><i class="ion-close"></i></a><a href="#"><img
-                                            width="50" height="50" alt="cart_thumb1" src="">Culotte
-                                        unicolore (sans couture)</a><span class="cart_quantity"> 4 x <span
-                                            class="cart_amount"><span
-                                                class="price_symbole">44,54&nbsp;€</span></span></span></li>
-                                <li><a href="#" class="item_remove"><i class="ion-close"></i></a><a href="#"><img
-                                            width="50" height="50" alt="cart_thumb1" src="">Culotte
-                                        en dentelle</a><span class="cart_quantity"> 3 x
-                                        <span class="cart_amount"><span
-                                                class="price_symbole">17,17&nbsp;€</span></span></span></li>
-                                <li><a href="#" class="item_remove"><i class="ion-close"></i></a><a href="#"><img
-                                            width="50" height="50" alt="cart_thumb1" src="">Bikini
-                                        unicolore côtelé</a><span class="cart_quantity"> 4
-                                        x <span class="cart_amount"><span
-                                                class="price_symbole">28,24&nbsp;€</span></span></span></li>
-                                <li><a href="#" class="item_remove"><i class="ion-close"></i></a><a href="#"><img
-                                            width="50" height="50" alt="cart_thumb1" src="">Culotte
-                                        unicolore femme (sans couture)</a><span class="cart_quantity"> 2 x <span
-                                            class="cart_amount"><span
-                                                class="price_symbole">56,07&nbsp;€</span></span></span></li>
-                                <li><a href="#" class="item_remove"><i class="ion-close"></i></a><a href="#"><img
-                                            width="50" height="50" alt="cart_thumb1" src="">Tanga
-                                        unicolore</a><span class="cart_quantity"> 3 x <span class="cart_amount"><span
-                                                class="price_symbole">38,84&nbsp;€</span></span></span></li>
-                                <li><a href="#" class="item_remove"><i class="ion-close"></i></a><a href="#"><img
-                                            width="50" height="50" alt="cart_thumb1" src="">Culotte
-                                        en dentelle</a><span class="cart_quantity"> 1 x
-                                        <span class="cart_amount"><span
-                                                class="price_symbole">58,43&nbsp;€</span></span></span></li>
-                                <li><a href="#" class="item_remove"><i class="ion-close"></i></a><a href="#"><img
-                                            width="50" height="50" alt="cart_thumb1" src="">Culotte
-                                        à blocs de couleurs en dentelle</a><span class="cart_quantity"> 3 x <span
-                                            class="cart_amount"><span
-                                                class="price_symbole">54,95&nbsp;€</span></span></span></li>
+                                <li *ngFor="let article of panier?.articles">
+                                    <a href="#" class="item_remove" (click)="removeFromCart($event, article.produitDAO, article.quantite)">
+                                        <i class="ion-close"></i>
+                                    </a>
+                                    <a [routerLink]="['/produitDAO', article.produitDAO?.slug]">
+                                        <img width="50" height="50" alt="cart_thumb1" [src]="article.produitDAO?.imageUrl">{{article.produitDAO?.designation}}</a>
+                                    <span class="cart_quantity"> {{article.quantite}} x
+                                        <span class="cart_amount">
+                                            <span class="price_symbole">{{article.produitDAO?.prixUnitaire}} f
+                                            </span>
+                                        </span>
+                                    </span>
+                                </li>
                             </ul>
-                            <div class="cart_footer">
-                                <p class="cart_total"><strong>Subtotal:</strong><span class="cart_price"><span
-                                            class="price_symbole"></span></span>1 057,58&nbsp;€ </p>
+                            <div class="cart_footer" *ngIf="panier?.articles?.length ">
+                                <p class="cart_total"><strong>Total articles:</strong><span class="cart_price"><span
+                                            class="price_symbole"></span></span>{{panier?.total}} f </p>
                                 <p class="cart_buttons"><a routerlink="/cart" class="btn btn-fill-line view-cart"
-                                        ng-reflect-router-link="/cart" href="/cart">View Cart</a><a
+                                        ng-reflect-router-link="/cart" href="/cart">Voir le panier</a><a
                                         routerlink="/checkout" class="btn btn-fill-out checkout"
-                                        ng-reflect-router-link="/checkout" href="/checkout">Checkout</a></p>
+                                        ng-reflect-router-link="/checkout" href="/checkout">Acheter</a></p>
                             </div>
                         </div>
                     </li>

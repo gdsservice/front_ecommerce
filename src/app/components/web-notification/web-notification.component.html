@@ -1,0 +1,5 @@
+<div class="alert-container">
+    <div class="alert alert-{{notification.status}}" 
+        [innerHTML]="notification.message" 
+        role="alert" *ngFor="let notification of notifications"></div>
+</div>

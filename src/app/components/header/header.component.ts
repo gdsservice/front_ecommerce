@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { CategorieService } from '../../services/categorie.service';
 import { CatProduitListModel } from '../../models/catProduitList.model';
+import { lastValueFrom } from 'rxjs';
+import { PanierService } from '../../services/panier.service';
+import { PanierDAOModel } from '../../models/panier-daomodel';
+import { ProductService } from '../../services/product.service';
+import { ProduitDAOModel } from '../../models/produitDAO.model ';
 
 @Component({
   selector: 'app-header',
@@ -10,21 +15,28 @@ import { CatProduitListModel } from '../../models/catProduitList.model';
 export class HeaderComponent {
 
   categorieStock: CatProduitListModel[] = [];
+  panier?:PanierDAOModel;
 
-  constructor(private categorieService:CategorieService) {}
+  constructor(
+    private categorieService:CategorieService, 
+    private panierService: PanierService,
+  ) {}
 
-  async ngOnInit() {
-    this.getCategorie();
+ async ngOnInit() {
+  this.panierService.panier$.subscribe({
+    next: (value:PanierDAOModel) => {
+      this.panier = value;
+    }
+  })
+  const categorieData = await lastValueFrom(this.categorieService.searchCategorie(1,6));
+    if (categorieData) {
+      this.categorieStock = categorieData;
+    }
   }
 
-  getCategorie(){
-    this.categorieService.searchCategorie(1,4).subscribe({
-      next: (response) => {
-        this.categorieStock = response;
-        console.log('Catégories récupérées avec succès:', this.categorieStock);
-        
-      }
-    });
+  removeFromCart(event:any, produitDAO?: ProduitDAOModel, quantite?: number) {
+    event.preventDefault();
+    this.panierService.removeProduit(produitDAO, quantite)
   }
 
 }

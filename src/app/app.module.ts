@@ -31,6 +31,10 @@ import { TabProductContainerComponent } from './components/tab-product-container
 import { CommonModule } from '@angular/common';
 import { FormatPricePipe } from './pipes/format-price.pipe';
 import { FormatSoldeRatePipe } from './pipes/format-solde-rate.pipe';
+import { ShopListComponent } from './components/shop/shop-list/shop-list.component';
+import { ProductItemListComponent } from './components/product-item-list/product-item-list.component';
+import { WebNotificationComponent } from './components/web-notification/web-notification.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -60,13 +64,17 @@ import { FormatSoldeRatePipe } from './pipes/format-solde-rate.pipe';
     FormatImageUrlPipe,
     TabProductContainerComponent,
     FormatPricePipe,
-    FormatSoldeRatePipe
+    FormatSoldeRatePipe,
+    ShopListComponent,
+    ProductItemListComponent,
+    WebNotificationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     CommonModule,
+    ReactiveFormsModule,
   ],
   providers: [
     provideClientHydration()

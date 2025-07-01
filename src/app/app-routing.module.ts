@@ -49,6 +49,14 @@ const routes: Routes = [
     path: "produitDAO/:slug",
     component: SingleProductComponent
   },
+    {
+    path: "category/:slug",
+    component: SingleProductComponent
+  },
+  {
+    path: "shop/categorie/:slug",
+    component: ShopComponent
+  },
   {
     path: "account",
     component: AccountComponent
@@ -61,6 +69,7 @@ const routes: Routes = [
     path: "shop",
     component: ShopComponent
   },
+  
   {
     path: "signin",
     component: SigninComponent

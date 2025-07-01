@@ -2,7 +2,6 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment.dev';
-import { ResponseGet } from '../models/response-get';
 import { ProduitDAOModel } from '../models/produitDAO.model ';
 
 @Injectable({
@@ -16,6 +15,10 @@ export class ProductService {
   public listProduit(): Observable<Array<ProduitDAOModel>> {
     return this.http.get<Array<ProduitDAOModel>>(`${environment.backendHost}/produit/listeProd`);
   }
+
+     public listProduitLimit(min:number=1, max:number=20): Observable<Array<ProduitDAOModel>> {
+        return this.http.get<Array<ProduitDAOModel>>(`${environment.backendHost}/produit/limite?min=${min}&max=${max}`);
+    }
 
   public getProduitBySlug(slug: string): Observable<ProduitDAOModel> {
     return this.http.get<ProduitDAOModel>(`${environment.backendHost}/produit/slug/${slug}`);
