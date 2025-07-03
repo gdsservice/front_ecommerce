@@ -1,0 +1,35 @@
+name: Deploy App Ecommerce Front
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Installer les dépendances et builder Angular
+        run: |
+          npm install
+          npm run build
+
+      - name: Login to VPS
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+      - name: Copy files to VPS
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          source: "./dist/front_ecommerce/browser/*"
+          target: "/var/www/front_ecommerce"
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+
