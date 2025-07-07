@@ -16,7 +16,7 @@ jobs:
       - name: Installer les dépendances et builder Angular
         run: |
           npm install
-          npm run build
+          npm run build -- --configuration=production
 
       - name: Login to VPS
         uses: appleboy/ssh-action@v0.1.8
@@ -24,6 +24,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PRIVATE_KEY }}
+
       - name: Copy files to VPS
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -32,4 +33,3 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PRIVATE_KEY }}
-
