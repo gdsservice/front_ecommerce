@@ -56,6 +56,22 @@ export class SingleProductComponent {
 
   }
 
+  scrollToDescription() {
+    const descriptionElement = document.getElementById('scroll');
+    if (descriptionElement) {
+      descriptionElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  isDescriptionCollapsed: boolean = true;
+
+get shortDescription(): string {
+  const desc = this.produitDAO?.description || ' ';
+  const lines = desc.split('\n');
+  return lines.slice(1, 5).join('\n');
+}
+
+
   setQuantie(event: any, quantite: number = 0) {
     if (!event) {
       this.quantite += quantite;

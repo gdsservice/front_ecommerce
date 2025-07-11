@@ -19,5 +19,7 @@ export interface ProduitDAOModel{
     vedette?: boolean,
     offreSpeciale?: boolean,
     // plusVendu?: boolean,
+    info: string,
+    caracteristique: string
 
 }

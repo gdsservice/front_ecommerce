@@ -7,6 +7,7 @@ import { LocalStorageService } from './local-storage.service';
 import { NotificationModel } from '../models/notification-model';
 import { WebNotificationService } from './web-notification.service';
 import { ProductService } from './product.service';
+import { ProduitModel } from '../models/produit.model';
 
 @Injectable({
   providedIn: 'root'
@@ -84,8 +85,8 @@ export class PanierService {
     }
   }
 
-  removeAllProduits(produitDAO?: ProduitDAOModel) {
-     if(produitDAO){
+  removeAllProduits(produit?: ProduitModel) {
+     if(produit){
       this.panier.articles = [];
       this.panier.quantite = 0;
       this.panier.total = 0;
