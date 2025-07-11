@@ -86,15 +86,13 @@
                             <!-- <li>SKU: <a href="">BE45VGRT</a></li> -->
                             <li>Categorie: <a [routerLink]="['/','categorie',produitDAO.categorieStockProdDTO.nom]"
                                     class="text-uppercase">{{produitDAO.categorieStockProdDTO.nom}}</a></li>
-                            <li>Caracteristique: <a href="" rel="tag">Impression</a>, <a href="" rel="tag">Scane</a>
+                            <li>Caracteristique: <a class="text-uppercase">{{produitDAO!.caracteristique }}</a>
                             </li>
                         </ul>
                         <div class="product_share"><span>Partager:</span>
                             <ul class="social_icons">
-                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
-                                <li><a href="#"><i class="ion-social-youtube-outline"></i></a>
+                                <li><a href="https://www.facebook.com"><i class="ion-social-facebook"></i></a></li>
+                                <li><a href="https://www.youtube.com/"><i class="ion-social-youtube-outline"></i></a>
                                 </li>
                                 <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
                             </ul>
