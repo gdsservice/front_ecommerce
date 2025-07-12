@@ -1,4 +1,5 @@
-import {CategorieModel} from "./catProduitList.model";
+import { CategorieModel } from "./categorie.model ";
+
 
 export interface ProduitINPUTModel{
   idProd: string | null,
