@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { EntityService } from '../../services/entity.service';
-import { lastValueFrom, Subscription } from 'rxjs';
+import { lastValueFrom, filter } from 'rxjs';
 import { BannerModel } from '../../models/banner-model';
 import { CollectionModel } from '../../models/collection-model';
 import { ResponseGet } from '../../models/response-get';
 import { ProduitDAOModel } from '../../models/produitDAO.model ';
 import { ProductService } from '../../services/product.service';
 import { log } from 'node:console';
+import { Inject, PLATFORM_ID } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -71,7 +73,20 @@ export class HomeComponent {
 
 
 
-  constructor(private produitService: ProductService) { }
+  constructor(
+    private produitService: ProductService,
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object,
+  ) { 
+    router.events.pipe(
+          filter((event => event instanceof NavigationEnd))
+        ).subscribe({
+          next: ()=>{
+            this.ngOnInit();
+          }
+        });
+  }
+  
 
   async ngOnInit() {
 
