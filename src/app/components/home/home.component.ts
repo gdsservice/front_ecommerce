@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
-import { EntityService } from '../../services/entity.service';
 import { lastValueFrom, filter } from 'rxjs';
 import { BannerModel } from '../../models/banner-model';
 import { CollectionModel } from '../../models/collection-model';
-import { ResponseGet } from '../../models/response-get';
 import { ProduitDAOModel } from '../../models/produitDAO.model ';
 import { ProductService } from '../../services/product.service';
-import { log } from 'node:console';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 
@@ -77,38 +74,31 @@ export class HomeComponent {
     private produitService: ProductService,
     private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object,
-  ) { 
+  ) {
     router.events.pipe(
-          filter((event => event instanceof NavigationEnd))
-        ).subscribe({
-          next: ()=>{
-            this.ngOnInit();
-          }
-        });
+      filter((event => event instanceof NavigationEnd))
+    ).subscribe({
+      next: () => {
+        this.ngOnInit();
+      }
+    });
   }
-  
+
 
   async ngOnInit() {
-
-    this.getProducts()
-  }
-
-  async getProducts() {
     const queries = [
       { key: 'nouveaute', value: 'nouveaute=true' },
       { key: 'plusVendu', value: 'plusVendu=true' },
       { key: 'vedette', value: 'vedette=true' },
       { key: 'offreSpeciale', value: 'offreSpeciale=true' }
     ];
-
     for (const query of queries) {
-      const productsData = await lastValueFrom(this.produitService.searchProduit(query.value));
-      this.products[query.key] = productsData;
+      this.produitService.searchProduit(query.value)
+        .subscribe(
+          data => {
+            this.products[query.key] = data;
+          }
+        )
     }
-
   }
-
-
-
-
 }

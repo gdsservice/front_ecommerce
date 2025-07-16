@@ -70,26 +70,35 @@
                         class="ion-android-menu"></span></button>
                 <div id="navbarSupportedContent" class="navbar-collapse justify-content-end collapse" style="">
                     <ul class="navbar-nav">
-                        <li class="dropdown"><a routerlink="/" class="nav-link" ng-reflect-router-link="/"
-                                href="/">ACCUEIL</a></li>
-                        <li class="dropdown"><a href="#" data-bs-toggle="dropdown"
-                                class="dropdown-toggle nav-link active" aria-expanded="false">Pages</a>
-                            <div class="dropdown-menu">
-                                <ul>
-                                    <li><a routerlink="/about" class="dropdown-item nav-link nav_item"
-                                            ng-reflect-router-link="/about" href="/about">A Propos de Nous</a></li>
-                                    <li><a routerlink="/contact" class="dropdown-item nav-link nav_item"
-                                            ng-reflect-router-link="/contact" href="/contact">Contactez nous</a></li>
-                                    <li><a routerlink="/fqa" class="dropdown-item nav-link nav_item"
-                                            ng-reflect-router-link="/fqa" href="/fqa">Faq</a></li>
-                                    <li><a routerlink="/signin" class="dropdown-item nav-link nav_item"
-                                            ng-reflect-router-link="/signin" href="/signin">Connexion</a></li>
-                                    <li><a routerlink="/signup" class="dropdown-item nav-link nav_item"
-                                            ng-reflect-router-link="/signup" href="/signup">Inscription</a></li>
-                                    <li><a routerlink="/terms" class="dropdown-item nav-link nav_item"
-                                            ng-reflect-router-link="/terms" href="/terms">Termes et Conditions</a></li>
-                                </ul>
-                            </div>
+                        <li class="dropdown">
+                            <a routerlink="/" class="nav-link" ng-reflect-router-link="/" href="/">ACCUEIL</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" data-bs-toggle="dropdown" class="dropdown-toggle nav-link active" aria-expanded="false">Pages</a>
+                                <div class="dropdown-menu">
+                                    <ul>
+                                        <li>
+                                            <a routerlink="/about" class="dropdown-item nav-link nav_item"
+                                            ng-reflect-router-link="/about" href="/about">A Propos de Nous</a>
+                                        </li>
+                                        <li>
+                                            <a routerlink="/contact" class="dropdown-item nav-link nav_item"
+                                            ng-reflect-router-link="/contact" href="/contact">Contactez nous</a>
+                                        </li>
+                                        <li><a routerlink="/fqa" class="dropdown-item nav-link nav_item"
+                                            ng-reflect-router-link="/fqa" href="/fqa">Faq</a>
+                                        </li>
+                                        <li><a routerlink="/signin" class="dropdown-item nav-link nav_item"
+                                                ng-reflect-router-link="/signin" href="/signin">Connexion</a>
+                                        </li>
+                                        <li><a routerlink="/signup" class="dropdown-item nav-link nav_item"
+                                                ng-reflect-router-link="/signup" href="/signup">Inscription</a>
+                                        </li>
+                                        <li><a routerlink="/terms" class="dropdown-item nav-link nav_item"
+                                                ng-reflect-router-link="/terms" href="/terms">Termes et Conditions</a>
+                                        </li>
+                                    </ul>
+                                </div>
                         </li>
                         <li class="dropdown dropdown-mega-menu"><a href="#" data-bs-toggle="dropdown"
                                 class="dropdown-toggle nav-link" aria-expanded="false">Produits</a>
@@ -110,19 +119,29 @@
 
                             </div>
                         </li>
-                        <li class="dropdown dropdown-mega-menu"><a routerlink="/shop-list" class="nav-link"
-                                routerLink="/shop">BOUTIQUE</a></li>
-                        <li><a routerlink="/contact" class="nav-link nav_item" ng-reflect-router-link="/contact"
-                                href="/contact">Contactez nous</a></li>
+                        <li class="dropdown dropdown-mega-menu">
+                            <a routerlink="/shop-list" class="nav-link" routerLink="/shop">BOUTIQUE</a>
+                        </li>
+                        <li>
+                            <a routerlink="/contact" class="nav-link nav_item" ng-reflect-router-link="/contact"
+                               href="/contact">Contactez nous</a>
+                        </li>
                     </ul>
                 </div>
                 <ul class="navbar-nav attr-nav align-items-center">
-                    <li><a href="javascript:void(0);" class="nav-link search_trigger"><i
-                                class="linearicons-magnifier"></i></a>
-                        <div class="search_wrap"><span class="close-search"><i class="ion-ios-close-empty"></i></span>
+                    <li>
+                        <a href="javascript:void(0);" class="nav-link search_trigger">
+                            <i class="linearicons-magnifier"></i>
+                        </a>
+                        <div class="search_wrap">
+                            <span class="close-search">
+                                <i class="ion-ios-close-empty"></i>
+                            </span>
                             <form novalidate="" class="ng-untouched ng-pristine ng-valid">
-                                <input type="text" placeholder="Search" id="search_input" class="form-control"><button
-                                    type="submit" class="search_icon"><i class="ion-ios-search-strong"></i></button>
+                                <input type="text" placeholder="Search" id="search_input" class="form-control">
+                                <button type="submit" class="search_icon">
+                                    <i class="ion-ios-search-strong"></i>
+                                </button>
                             </form>
                         </div>
                         <div class="search_overlay"></div>
@@ -151,9 +170,10 @@
                         <div class="search_overlay"></div>
                         <div class="search_overlay"></div>
                     </li>
-                    <li class="dropdown cart_dropdown"><a href="#" data-bs-toggle="dropdown"
-                            class="nav-link cart_trigger"><i class="linearicons-cart"></i><span
-                                class="cart_count">{{panier?.quantite}}</span></a>
+                    <li class="dropdown cart_dropdown">
+                        <a href="#" data-bs-toggle="dropdown" class="nav-link cart_trigger">
+                            <i class="linearicons-cart"></i>
+                            <span class="cart_count">{{panier?.quantite}}</span></a>
                         <div class="cart_box dropdown-menu dropdown-menu-right">
                             <ul class="cart_list">
                                 <li *ngFor="let article of panier?.articles">

@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 import { ProduitDAOModel } from '../../models/produitDAO.model ';
-import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
-import { log } from 'console';
-import { lastValueFrom } from 'rxjs';
-import { ResponseGet } from '../../models/response-get';
 import { CatProduitListModel } from '../../models/catProduitList.model';
 import { CategorieService } from '../../services/categorie.service';
 import { PanierService } from '../../services/panier.service';
 import { PanierDAOModel } from '../../models/panier-daomodel';
+import { Inject, PLATFORM_ID } from '@angular/core';
+import { NavigationEnd, Router, ActivatedRoute, } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-single-product',
@@ -32,8 +31,17 @@ export class SingleProductComponent {
     private route: ActivatedRoute,
     private produitService: ProductService,
     private panierService: PanierService,
-    private categorieService: CategorieService
-  ) { }
+    private categorieService: CategorieService,
+  @Inject(PLATFORM_ID) private platformId: Object,
+    ) {
+      router.events.pipe(
+        filter((event => event instanceof NavigationEnd))
+      ).subscribe({
+        next: () => {
+          this.ngOnInit();
+        }
+      });
+    }
 
 
 
