@@ -38,7 +38,7 @@
                                         </div>
                                     </td>
                                     <td data-title="Total" class="product-subtotal">
-                                        {{article.total! | formatMontant}} f
+                                        {{article.total! | formatMontant}} 
                                     </td>
                                     <td data-title="Remove" class="product-remove">
                                         <a href="#" (click)="removeProduit($event, article)"><i
@@ -73,7 +73,7 @@
                                     </tr>
                                     <tr>
                                         <td class="cart_total_label">Total</td>
-                                        <td class="cart_total_amount"><strong>{{panier?.total! | formatMontant}} FCFA</strong></td>
+                                        <td class="cart_total_amount"><strong>{{panier?.total! | formatMontant}}</strong></td>
                                     </tr>
                                 </tbody>
                             </table>
