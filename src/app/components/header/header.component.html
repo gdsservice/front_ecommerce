@@ -184,7 +184,7 @@
                                         <img width="50" height="50" alt="cart_thumb1" [src]="article.produitDAO?.imageUrl">{{article.produitDAO?.designation}}</a>
                                     <span class="cart_quantity"> {{article.quantite}} x
                                         <span class="cart_amount">
-                                            <span class="price_symbole">{{article.produitDAO?.prixUnitaire}} f
+                                            <span class="price_symbole">{{article.produitDAO?.prixUnitaire! | formatMontant}} f
                                             </span>
                                         </span>
                                     </span>
@@ -192,7 +192,7 @@
                             </ul>
                             <div class="cart_footer" *ngIf="panier?.articles?.length ">
                                 <p class="cart_total"><strong>Total articles:</strong><span class="cart_price"><span
-                                            class="price_symbole"></span></span>{{panier?.total}} f </p>
+                                            class="price_symbole"></span></span>{{panier?.total! | formatMontant}} f </p>
                                 <p class="cart_buttons"><a routerlink="/cart" class="btn btn-fill-line view-cart"
                                         ng-reflect-router-link="/cart" href="/cart">Voir le panier</a><a
                                         routerlink="/checkout" class="btn btn-fill-out checkout"

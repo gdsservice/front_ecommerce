@@ -24,7 +24,7 @@
                                     <td data-title="Product" class="product-name">
                                         <a>{{article.produitDAO?.designation}}</a>
                                     </td>
-                                    <td data-title="Price" class="product-price">{{article.produitDAO?.prixUnitaire}}
+                                    <td data-title="Price" class="product-price">{{article.produitDAO?.prixUnitaire! | formatMontant}}
                                     </td>
                                     <td data-title="Quantity" class="product-quantity">
                                         <div class="quantity">
@@ -38,7 +38,7 @@
                                         </div>
                                     </td>
                                     <td data-title="Total" class="product-subtotal">
-                                        {{article.total}} f
+                                        {{article.total! | formatMontant}} f
                                     </td>
                                     <td data-title="Remove" class="product-remove">
                                         <a href="#" (click)="removeProduit($event, article)"><i
@@ -73,7 +73,7 @@
                                     </tr>
                                     <tr>
                                         <td class="cart_total_label">Total</td>
-                                        <td class="cart_total_amount"><strong>{{panier?.total}} FCFA</strong></td>
+                                        <td class="cart_total_amount"><strong>{{panier?.total! | formatMontant}} FCFA</strong></td>
                                     </tr>
                                 </tbody>
                             </table>

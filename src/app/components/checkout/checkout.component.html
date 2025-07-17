@@ -69,12 +69,12 @@
                                     <tbody>
                                         <tr *ngFor="let article of panier?.articles">
                                             <td>{{article.produitDAO?.designation}}
-                                                <span class="product-price">{{article.produitDAO?.prixUnitaire}}
+                                                <span class="product-price">{{article.produitDAO?.prixUnitaire! | formatMontant}}
                                                     f</span>
                                                 x<span class="product-qty"> {{article.quantite}}</span>
                                             </td>
                                             <td>
-                                                {{article?.total}} FCFA
+                                                {{article?.total! | formatMontant}} FCFA
                                             </td>
                                         </tr>
                                     </tbody>
@@ -85,7 +85,7 @@
                                         </tr>
                                         <tr>
                                             <th>Total</th>
-                                            <td class="product-subtotal">{{panier?.total}} FCFA</td>
+                                            <td class="product-subtotal">{{panier?.total! | formatMontant}} FCFA</td>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -104,7 +104,7 @@
                 <div class="col-md-12">
                     <a (click)="ajouterClientEtEnregistrerCde()" class="btn btn-fill-out btn-block">Confirmer votre
                         commande
-                        ({{panier?.total}} FCFA)
+                        ({{panier?.total! | formatMontant}} FCFA)
                     </a>
                 </div>
 
