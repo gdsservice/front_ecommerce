@@ -4,9 +4,12 @@
             <div class="row" *ngIf="produitDAO">
                 <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
                     <div class="product-image">
-                        <div class="product_img_box"><img id="product_img" alt="product_img1" [src]="mainImageUrl"
-                                width="100%" [attr.data-zoom-image]="mainImageUrl"><a title="Zoom"
-                                class="product_img_zoom"><span class="linearicons-zoom-in"></span></a>
+                        <div class="product_img_box">
+                            <img id="product_img" alt="product_img1" [src]="mainImageUrl"
+                                width="100%" [attr.data-zoom-image]="mainImageUrl">
+                                <a title="Zoom"class="product_img_zoom">
+                                    <span class="linearicons-zoom-in"></span>
+                                </a>
                         </div>
                         <div id="pr_item_gallery" data-slides-to-show="4" data-slides-to-scroll="1"
                             data-infinite="false"
@@ -30,8 +33,8 @@
                             <h4 class="product_title">
                                 <a href="">{{produitDAO!.designation}}</a>
                             </h4>
-                            <div class="product_price"><span class="price">{{produitDAO!.prixUnitaire }}
-                                    f</span><del>{{produitDAO!.prixRegulier}} f</del>
+                            <div class="product_price"><span class="price">{{produitDAO!.prixUnitaire! | formatMontant }}
+                                    f</span><del>{{produitDAO!.prixRegulier! | formatMontant}} f</del>
                                 <div class="on_sale"><span>{{ produitDAO ? (produitDAO | formatSoldeRate) : '' }} de
                                         réduction</span></div>
                             </div>

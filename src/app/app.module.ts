@@ -35,6 +35,9 @@ import { ShopListComponent } from './components/shop/shop-list/shop-list.compone
 import { ProductItemListComponent } from './components/product-item-list/product-item-list.component';
 import { WebNotificationComponent } from './components/web-notification/web-notification.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormatDatePipe } from './pipes/format-date.pipe';
+import { FormatMontantPipe } from './pipes/format-montant.pipe';
+import { FormatPhonePipe } from './pipes/format-phone.pipe';
 
 @NgModule({
   declarations: [
@@ -67,7 +70,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormatSoldeRatePipe,
     ShopListComponent,
     ProductItemListComponent,
-    WebNotificationComponent
+    WebNotificationComponent,
+      FormatDatePipe,
+  FormatMontantPipe,
+  FormatPhonePipe,
   ],
   imports: [
     BrowserModule,
