@@ -31,7 +31,7 @@ export class HeaderComponent {
       this.panier = value;
     }
   })
-  const categorieData = await lastValueFrom(this.categorieService.searchCategorie(1,4));
+  const categorieData = await lastValueFrom(this.categorieService.searchCategorie(1,6));
     if (categorieData) {
       this.categorieStock = categorieData;
     }
