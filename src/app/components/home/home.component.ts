@@ -15,13 +15,13 @@ import { NavigationEnd, Router } from '@angular/router';
 export class HomeComponent {
 
   banners: BannerModel[] = [
-    {
-      titre1: "Profitez d'une connexion longue portée fiable et stable, idéale pour les zones rurales",
-      titre2: "Ubquiti LiteBeam M5",
-      imageUrl: 'assets/imgBG/litebeambaniere.png',
-      btn_text: "Acheter maintenant",
-      btn_link: "/produitDAO/m5",
-    },
+    // {
+    //   titre1: "Profitez d'une connexion longue portée fiable et stable, idéale pour les zones rurales",
+    //   titre2: "Ubquiti LiteBeam M5",
+    //   imageUrl: 'assets/imgBG/litebeambaniere.png',
+    //   btn_text: "Acheter maintenant",
+    //   btn_link: "/produitDAO/m5",
+    // },
     {
       imageUrl: 'assets/imgBG/hp.png',
       titre1: "Travaillez et créez sans limites avec le HP EliteBook Core i5, puissant et élégant",
@@ -37,13 +37,13 @@ export class HomeComponent {
       btn_link: "/produitDAO/booster",
     },
 
-    {
-      imageUrl: 'assets/imgBG/l009.png',
-      titre1: "Améliorez votre confort et vos performances avec des équipements technologiques de pointe conçus pour une expérience immersive et fluide.",
-      titre2: "Microtik hAP L009",
-      btn_text: "Acheter maintenant",
-      btn_link: "/produitDAO/l009",
-    }
+    // {
+    //   imageUrl: 'assets/imgBG/l009.png',
+    //   titre1: "Améliorez votre confort et vos performances avec des équipements technologiques de pointe conçus pour une expérience immersive et fluide.",
+    //   titre2: "Microtik hAP L009",
+    //   btn_text: "Acheter maintenant",
+    //   btn_link: "/produitDAO/l009",
+    // }
   ];
 
   collections: CollectionModel[] = [
@@ -54,13 +54,13 @@ export class HomeComponent {
       btn_text: "Voir plus",
       btn_link: "/shop",
     },
-    {
-      imageUrl: 'assets/imgBG/m5cl.png',
-      titre1: "Super Prix",
-      titre2: "Ubquiti NSM2",
-      btn_text: "Voir plus",
-      btn_link: "",
-    }
+    // {
+    //   imageUrl: 'assets/imgBG/m5cl.png',
+    //   titre1: "Super Prix",
+    //   titre2: "Ubquiti NSM2",
+    //   btn_text: "Voir plus",
+    //   btn_link: "",
+    // }
   ];
 
   // products?: Array<ProduitDAOModel[]> = [];
