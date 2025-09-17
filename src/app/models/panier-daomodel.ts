@@ -6,4 +6,5 @@ export class PanierDAOModel {
     total: number = 0;
     articles: Array<ArticleDAOModel> = [];
     dateCreation?: Date;
+    note?: string;
 }

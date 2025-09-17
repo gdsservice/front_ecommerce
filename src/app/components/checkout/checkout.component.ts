@@ -9,7 +9,6 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ClientModel } from '../../models/client.model';
 import { CommandeInputModel } from '../../models/commandeInput-model';
 import { CommandeModel } from '../../models/commande-model';
-import { ReactiveFormsModule } from '@angular/forms';
 import { ProduitModel } from '../../models/produit.model';
 import { Router } from '@angular/router';
 
@@ -99,6 +98,7 @@ export class CheckoutComponent {
       total: this.panier.total,
       quantite: this.panier.quantite,
       clientCde: this.clientNew,
+      note: this.clientListForm.value.note,
     };
 
     // Création de la liste des produits commandés
@@ -118,6 +118,8 @@ export class CheckoutComponent {
     };
 
     // Appel du service backend
+    console.log(commandeInput);
+    
     this.commandeService.ajoutCommande(commandeInput).subscribe({
       next: (response) => {
         console.log('Commande effectuée avec succès', response);

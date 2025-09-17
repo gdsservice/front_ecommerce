@@ -6,5 +6,5 @@ export interface CommandeModel{
     total: number;
     quantite: number;
     clientCde?: ClientModel,
-
+    note?: string,
 }
