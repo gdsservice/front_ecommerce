@@ -135,6 +135,7 @@ export class SingleProductComponent {
               // if (prod.idProd === this.produitDAO?.idProd) {
               //   continue;
               // }
+              // yo
               const imageUrls = this.produitService.getImageUrls(prod.idProd!, 1);
               if (imageUrls.length > 0) {
                 prod.imageUrl = imageUrls[0];
