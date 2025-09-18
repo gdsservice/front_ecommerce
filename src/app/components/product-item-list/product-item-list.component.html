@@ -17,8 +17,8 @@
         <h6 class="product_title"><a [routerLink]="['/produitDAO', produitDAO?.slug]">{{produitDAO?.designation}}</a>
         </h6>
         <div class="product_price">
-            <span class="price">{{produitDAO?.prixUnitaire! | formatMontant }} f</span>
-            <del>{{produitDAO?.prixRegulier! | formatMontant}} f</del>
+            <span class="price">{{produitDAO?.prixUnitaire! | formatMontant }}</span>
+            <del>{{produitDAO?.prixRegulier! | formatMontant}}</del>
             <div class="on_sale">
                 <span>{{ produitDAO | formatSoldeRate }} de réduction</span>
             </div>
