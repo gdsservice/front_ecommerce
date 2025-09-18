@@ -48,7 +48,7 @@ export class HomeComponent {
 
   collections: CollectionModel[] = [
     {
-      imageUrl: 'assets/imgBG/xiaomi.png',
+      imageUrl: 'assets/imgBG/xiaomi1.png',
       titre1: "Super Deal",
       titre2: "Xiaomi Tv Box S",
       btn_text: "Voir plus",
