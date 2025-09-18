@@ -34,7 +34,7 @@
                                 <a href="">{{produitDAO!.designation}}</a>
                             </h4>
                             <div class="product_price"><span class="price">{{produitDAO!.prixUnitaire! | formatMontant }}
-                                    f</span><del>{{produitDAO!.prixRegulier! | formatMontant}} f</del>
+                                    </span><del>{{produitDAO!.prixRegulier! | formatMontant}}</del>
                                 <div class="on_sale"><span>{{ produitDAO ? (produitDAO | formatSoldeRate) : '' }} de
                                         réduction</span></div>
                             </div>

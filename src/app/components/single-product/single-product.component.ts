@@ -32,23 +32,23 @@ export class SingleProductComponent {
     private produitService: ProductService,
     private panierService: PanierService,
     private categorieService: CategorieService,
-  @Inject(PLATFORM_ID) private platformId: Object,
-    ) {
-      router.events.pipe(
-        filter((event => event instanceof NavigationEnd))
-      ).subscribe({
-        next: () => {
-          this.ngOnInit();
-        }
-      });
-    }
+    @Inject(PLATFORM_ID) private platformId: Object,
+  ) {
+    router.events.pipe(
+      filter((event => event instanceof NavigationEnd))
+    ).subscribe({
+      next: () => {
+        this.ngOnInit();
+      }
+    });
+  }
 
 
 
   ngOnInit(): void {
     if (typeof window !== 'undefined') {
-    window.scrollTo(0, 0);
-  }
+      window.scrollTo(0, 0);
+    }
     this.panierService.panier$.subscribe({
       next: (value: PanierDAOModel) => {
         this.panier = value;
@@ -73,11 +73,11 @@ export class SingleProductComponent {
 
   isDescriptionCollapsed: boolean = true;
 
-get shortDescription(): string {
-  const desc = this.produitDAO?.description || ' ';
-  const lines = desc.split('\n');
-  return lines.slice(1, 5).join('\n');
-}
+  get shortDescription(): string {
+    const desc = this.produitDAO?.description || ' ';
+    const lines = desc.split('\n');
+    return lines.slice(0, 5).join('\n');
+  }
 
 
   setQuantie(event: any, quantite: number = 0) {
@@ -86,16 +86,16 @@ get shortDescription(): string {
       if (this.quantite <= 0) {
         this.quantite = 1;
       }
-    }else{
+    } else {
       event.preventDefault();
       const value = event.target.value;
       const newValue = parseInt(value, 10);
       if (!isNaN(newValue)) {
         this.quantite = newValue;
-      }else{
-        this.quantite = 1; 
+      } else {
+        this.quantite = 1;
       }
-      
+
     }
 
 
@@ -158,7 +158,7 @@ get shortDescription(): string {
     this.router.navigate(['/checkout']);
   }
 
-   ajouterAuPanier(event: any) {
+  ajouterAuPanier(event: any) {
     event.preventDefault();
     this.panierService.addProduit(this.produitDAO, 1);
   }
