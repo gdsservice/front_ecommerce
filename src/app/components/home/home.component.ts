@@ -49,18 +49,18 @@ export class HomeComponent {
   collections: CollectionModel[] = [
     {
       imageUrl: 'assets/imgBG/xiaomi.png',
-      titre1: "Super Prix",
+      titre1: "Super Deal",
       titre2: "Xiaomi Tv Box S",
       btn_text: "Voir plus",
       btn_link: "/shop",
     },
-    // {
-    //   imageUrl: 'assets/imgBG/m5cl.png',
-    //   titre1: "Super Prix",
-    //   titre2: "Ubquiti NSM2",
-    //   btn_text: "Voir plus",
-    //   btn_link: "",
-    // }
+    {
+      imageUrl: 'assets/imgBG/booster1.png',
+      titre1: "Achetez, soyez satisfait",
+      titre2: "Booster de voiture",
+      btn_text: "Voir plus",
+      btn_link: "",
+    }
   ];
 
   // products?: Array<ProduitDAOModel[]> = [];
