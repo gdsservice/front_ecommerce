@@ -131,11 +131,12 @@ export class SingleProductComponent {
           // console.log(this.imageUrlRelative) 
           if (currentCategory) {
             this.produitRelative = currentCategory.produitList;
+            console.log(this.produitRelative);
+            
             for (const prod of this.produitRelative) {
               // if (prod.idProd === this.produitDAO?.idProd) {
               //   continue;
               // }
-              // yo
               const imageUrls = this.produitService.getImageUrls(prod.idProd!, 1);
               if (imageUrls.length > 0) {
                 prod.imageUrl = imageUrls[0];

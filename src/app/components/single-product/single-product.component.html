@@ -272,9 +272,9 @@
                                                         [routerLink]="['/produitDAO', currentProd?.slug]">{{currentProd.designation}}</a>
                                                 </h6>
                                                 <div class="product_price"><span
-                                                        class="price">{{produitDAO?.prixUnitaire! | formatMontant }}
-                                                        f</span><del>{{produitDAO?.prixRegulier! | formatMontant}} </del>
-                                                    <div class="on_sale"><span>{{ produitDAO | formatSoldeRate }} de
+                                                        class="price">{{currentProd?.prixUnitaire! | formatMontant }}
+                                                        </span><del>{{currentProd?.prixRegulier! | formatMontant}} </del>
+                                                    <div class="on_sale"><span>{{ currentProd | formatSoldeRate }} de
                                                             réduction</span></div>
                                                 </div>
                                                 <div class="cart_btn row g-2">
