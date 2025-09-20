@@ -122,7 +122,7 @@ export class SingleProductComponent {
 
 
   getProduitByCategorie() {
-    this.categorieService.searchCategorie(1, 5).subscribe({
+    this.categorieService.searchCategorie(1, 25).subscribe({
       next: (response) => {
         this.categorieStock = response;
         // recuperer uniquement les produits de la categorie courante
