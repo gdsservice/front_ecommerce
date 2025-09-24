@@ -73,11 +73,12 @@ export class SingleProductComponent {
 
   isDescriptionCollapsed: boolean = true;
 
-  get shortDescription(): string {
-    const desc = this.produitDAO?.description || ' ';
-    const lines = desc.split('\n');
-    return lines.slice(0, 5).join('\n');
-  }
+get shortDescription(): string {
+  const desc = this.produitDAO?.description || '';
+  const lines = desc.split('\n');   // sépare les lignes
+  return lines.slice(0, 4).join('<br>');  // garde les 4 premières et ajoute <br> pour le retour à la ligne
+}
+
 
 
   setQuantie(event: any, quantite: number = 0) {
@@ -131,7 +132,7 @@ export class SingleProductComponent {
           // console.log(this.imageUrlRelative) 
           if (currentCategory) {
             this.produitRelative = currentCategory.produitList;
-            console.log(this.produitRelative);
+            // console.log(this.produitRelative);
             
             for (const prod of this.produitRelative) {
               // if (prod.idProd === this.produitDAO?.idProd) {
