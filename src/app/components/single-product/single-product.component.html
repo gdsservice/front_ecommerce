@@ -45,9 +45,9 @@
                                 </div><span class="rating_num">(21)</span>
                             </div>
                             <div class="pr_desc">
-                                <p *ngIf="isDescriptionCollapsed" [innerHTML]="shortDescription"></p>
+                                <p class="pr_desc" *ngIf="isDescriptionCollapsed" [innerHTML]="shortDescription"></p>
 
-                                <p *ngIf="isDescriptionCollapsed">
+                                <p class="pr_desc" *ngIf="isDescriptionCollapsed">
                                     <a class="voirPlus" (click)="isDescriptionCollapsed = false; scrollToDescription()" style="cursor: pointer;">
                                     Voir plus
                                     </a>

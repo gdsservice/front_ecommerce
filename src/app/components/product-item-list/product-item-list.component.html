@@ -30,7 +30,9 @@
             <span class="rating_num">(21)</span>
         </div>
         <div class="pr_desc">
-            <p>{{produitDAO?.description}}</p>
+            <p>
+                <span [innerHTML]="produitDAO?.description || 'Aucune description disponible'"></span>
+            </p>
         </div>
         <div class="list_product_action_box">
             <ul class="list_none pr_action_btn">
