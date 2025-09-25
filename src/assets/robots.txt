@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Bloquer les pages inutiles pour l'indexation
+Disallow: /admin/
+Disallow: /login
+Disallow: /register
+Disallow: /cart
+Disallow: /checkout
+
+# Indiquer l'emplacement de ton sitemap dynamique
+Sitemap: https://bamakogadget.com/sitemap.xml
