@@ -5,11 +5,11 @@
                 <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
                     <div class="product-image">
                         <div class="product_img_box">
-                            <img id="product_img" alt="product_img1" [src]="mainImageUrl"
-                                width="100%" [attr.data-zoom-image]="mainImageUrl">
-                                <a title="Zoom"class="product_img_zoom">
-                                    <span class="linearicons-zoom-in"></span>
-                                </a>
+                            <img id="product_img" alt="product_img1" [src]="mainImageUrl" width="100%"
+                                [attr.data-zoom-image]="mainImageUrl">
+                            <a title="Zoom" class="product_img_zoom">
+                                <span class="linearicons-zoom-in"></span>
+                            </a>
                         </div>
                         <div id="pr_item_gallery" data-slides-to-show="4" data-slides-to-scroll="1"
                             data-infinite="false"
@@ -33,8 +33,9 @@
                             <h4 class="product_title">
                                 <a href="">{{produitDAO!.designation}}</a>
                             </h4>
-                            <div class="product_price"><span class="price">{{produitDAO!.prixUnitaire! | formatMontant }}
-                                    </span><del>{{produitDAO!.prixRegulier! | formatMontant}}</del>
+                            <div class="product_price"><span class="price">{{produitDAO!.prixUnitaire! | formatMontant
+                                    }}
+                                </span><del>{{produitDAO!.prixRegulier! | formatMontant}}</del>
                                 <div class="on_sale"><span>{{ produitDAO ? (produitDAO | formatSoldeRate) : '' }} de
                                         réduction</span></div>
                             </div>
@@ -45,14 +46,18 @@
                                 </div><span class="rating_num">(21)</span>
                             </div>
                             <div class="pr_desc">
-                                <p class="pr_desc" *ngIf="isDescriptionCollapsed" [innerHTML]="shortDescription"></p>
+                                <span [innerHTML]="shortDescription"></span>
 
-                                <p class="pr_desc" *ngIf="isDescriptionCollapsed">
-                                    <a class="voirPlus" (click)="isDescriptionCollapsed = false; scrollToDescription()" style="cursor: pointer;">
-                                    Voir plus
+                                <!-- Bouton Voir plus / Voir moins -->
+                                <p *ngIf="produitDAO.description && produitDAO.description.length > maxLength">
+                                    <a class="voirPlus"
+                                        (click)="isDescriptionCollapsed = !isDescriptionCollapsed; scrollToDescription()"
+                                        style="cursor: pointer;">
+                                        {{ isDescriptionCollapsed ? 'Voir plus' : 'Voir moins' }}
                                     </a>
                                 </p>
                             </div>
+
                             <div class="product_sort_info">
                                 <ul>
                                     <li><i class="linearicons-shield-check"></i> Garantie d'un an sur la marque HP
@@ -133,8 +138,9 @@
                             </div>
 
                             <div id="Additional-info" role="tabpanel" aria-labelledby="Additional-info-tab"
-                                class="tab-pane fade"> 
-                            <span [innerHTML]="produitDAO?.info || 'Aucune info disponible'"></span> </div>
+                                class="tab-pane fade">
+                                <span [innerHTML]="produitDAO?.info || 'Aucune info disponible'"></span>
+                            </div>
                             <div id="Reviews" role="tabpanel" aria-labelledby="Reviews-tab" class="tab-pane fade">
                                 <div class="comments">
                                     <h5 class="product_tab_title">2 Avis Pour <span>{{produitDAO?.designation }}</span>
@@ -277,7 +283,7 @@
                                                 </h6>
                                                 <div class="product_price"><span
                                                         class="price">{{currentProd?.prixUnitaire! | formatMontant }}
-                                                        </span><del>{{currentProd?.prixRegulier! | formatMontant}} </del>
+                                                    </span><del>{{currentProd?.prixRegulier! | formatMontant}} </del>
                                                     <div class="on_sale"><span>{{ currentProd | formatSoldeRate }} de
                                                             réduction</span></div>
                                                 </div>

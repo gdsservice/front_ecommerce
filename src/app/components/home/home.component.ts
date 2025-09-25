@@ -15,13 +15,7 @@ import { NavigationEnd, Router } from '@angular/router';
 export class HomeComponent {
 
   banners: BannerModel[] = [
-    // {
-    //   titre1: "Profitez d'une connexion longue portée fiable et stable, idéale pour les zones rurales",
-    //   titre2: "Ubquiti LiteBeam M5",
-    //   imageUrl: 'assets/imgBG/litebeambaniere.png',
-    //   btn_text: "Acheter maintenant",
-    //   btn_link: "/produitDAO/m5",
-    // },
+
     {
       imageUrl: 'assets/imgBG/hp.png',
       titre1: "Travaillez et créez sans limites avec le HP EliteBook Core i5, puissant et élégant",

@@ -26,6 +26,9 @@ export class SingleProductComponent {
   panier?: PanierDAOModel;
   quantite: number = 1;
 
+  isDescriptionCollapsed: boolean = true;
+  maxLength: number = 200; 
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -71,12 +74,12 @@ export class SingleProductComponent {
     }
   }
 
-  isDescriptionCollapsed: boolean = true;
-
-get shortDescription(): string {
+  get shortDescription(): string {
   const desc = this.produitDAO?.description || '';
-  const lines = desc.split('\n');   // sépare les lignes
-  return lines.slice(0, 4).join('<br>');  // garde les 4 premières et ajoute <br> pour le retour à la ligne
+  if (this.isDescriptionCollapsed && desc.length > this.maxLength) {
+    return desc.substring(0, this.maxLength) + '...';
+  }
+  return desc;
 }
 
 
