@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { lastValueFrom, filter } from 'rxjs';
+import { lastValueFrom, filter, map } from 'rxjs';
 import { BannerModel } from '../../models/banner-model';
 import { CollectionModel } from '../../models/collection-model';
 import { ProduitDAOModel } from '../../models/produitDAO.model ';
 import { ProductService } from '../../services/product.service';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { BannerService } from '../../services/banner.service';
+import { BannerDAO } from '../../models/banner-dao';
 
 @Component({
   selector: 'app-home',
@@ -14,44 +16,20 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class HomeComponent {
 
-  banners: BannerModel[] = [
-
-    {
-      imageUrl: 'assets/imgBG/hp.png',
-      titre1: "Travaillez et créez sans limites avec le HP EliteBook Core i5, puissant et élégant",
-      titre2: "HP Elitebook Core i5",
-      btn_text: "Payer maintenant",
-      btn_link: "/produitDAO/hp",
-    },
-    {
-      imageUrl: 'assets/imgBG/booster.png',
-      titre1: "Démarrez votre véhicule facilement et gonflez vos pneus en toute sécurité et avec plus de confort",
-      titre2: "Booster de véhicule",
-      btn_text: "Voir plus",
-      btn_link: "/produitDAO/booster",
-    },
-
-    // {
-    //   imageUrl: 'assets/imgBG/l009.png',
-    //   titre1: "Améliorez votre confort et vos performances avec des équipements technologiques de pointe conçus pour une expérience immersive et fluide.",
-    //   titre2: "Microtik hAP L009",
-    //   btn_text: "Acheter maintenant",
-    //   btn_link: "/produitDAO/l009",
-    // }
-  ];
+  banners: BannerDAO[] = [];
 
   collections: CollectionModel[] = [
     {
       imageUrl: 'assets/imgBG/xiaomi1.png',
-      titre1: "Super Deal",
-      titre2: "Xiaomi Tv Box S",
+      sous_titre: "Super Deal",
+      titre: "Xiaomi Tv Box S",
       btn_text: "Voir plus",
       btn_link: "/shop",
     },
     {
       imageUrl: 'assets/imgBG/booster1.png',
-      titre1: "Achetez, soyez satisfait",
-      titre2: "Booster de voiture",
+      sous_titre: "Achetez, soyez satisfait",
+      titre: "Booster de voiture",
       btn_text: "Voir plus",
       btn_link: "",
     }
@@ -66,6 +44,7 @@ export class HomeComponent {
 
   constructor(
     private produitService: ProductService,
+    private bannerService: BannerService,
     private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object,
   ) {
@@ -94,5 +73,26 @@ export class HomeComponent {
           }
         )
     }
+
+    this.bannerService.listBanner()
+      .pipe(
+        map((banners: BannerDAO[]) => banners.map(banner => ({
+          ...banner,
+          imageUrl: banner.idBanner ? this.bannerService.getMainImageUrl(banner.idBanner) : ''
+        })))
+      )
+      .subscribe(
+        data => {
+          this.banners = data.map(banner => ({
+            ...banner,
+            imageUrl: this.bannerService.getImageUrl(banner.idBanner!),
+          }));
+
+        },
+        error => {
+          console.error('Erreur lors du chargement des banner', error);
+          this.isLoading = false;
+        }
+      );
   }
 }

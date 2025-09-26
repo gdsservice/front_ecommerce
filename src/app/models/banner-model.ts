@@ -1,6 +1,6 @@
 export class BannerModel {
-    titre1?: string;
-    titre2?: string;
+    sous_titre?: string;
+    titre?: string;
     imageUrl?: string;
     btn_text?: string;
     btn_link?: string;
