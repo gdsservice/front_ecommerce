@@ -154,7 +154,7 @@ export class SingleProductComponent {
 
   naviguerVersDetailProduit(slug: string | null) {
     if (slug) {
-      this.router.navigate(['/produitDAO', slug]);
+      this.router.navigate(['/produit', slug]);
     }
   }
 

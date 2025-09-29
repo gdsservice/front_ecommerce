@@ -109,7 +109,7 @@
                                             <li class="dropdown-header">{{categorie.categorieStock.nom}}</li>
                                             <li *ngFor="let produit of categorie.produitList">
                                                 <a class="dropdown-item nav-link nav_item"
-                                                    [routerLink]="['/','produitDAO', produit.slug]">
+                                                    [routerLink]="['/','produit', produit.slug]">
                                                     {{ produit.designation }}
                                                 </a>
                                             </li>
