@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { lastValueFrom, filter, map } from 'rxjs';
-import { BannerModel } from '../../models/banner-model';
 import { CollectionModel } from '../../models/collection-model';
 import { ProduitDAOModel } from '../../models/produitDAO.model ';
 import { ProductService } from '../../services/product.service';

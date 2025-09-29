@@ -279,7 +279,7 @@
                                                 (click)="naviguerVersDetailProduit(currentProd?.slug ?? null)"
                                                 style="cursor: pointer;">
                                                 <h6 class="product_title"><a
-                                                        [routerLink]="['/produitDAO', currentProd?.slug]">{{currentProd.designation}}</a>
+                                                        [routerLink]="['/produit', currentProd?.slug]">{{currentProd.designation}}</a>
                                                 </h6>
                                                 <div class="product_price"><span
                                                         class="price">{{currentProd?.prixUnitaire! | formatMontant }}

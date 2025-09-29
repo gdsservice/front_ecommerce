@@ -46,7 +46,7 @@ const routes: Routes = [
   //   component: SingleProductComponent
   // },
   {
-    path: "produitDAO/:slug",
+    path: "produit/:slug",
     component: SingleProductComponent
   },
     {

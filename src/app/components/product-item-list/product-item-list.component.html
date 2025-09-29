@@ -1,6 +1,6 @@
 <div class="product">
     <div class="product_img">
-        <a [routerLink]="['/produitDAO', produitDAO?.slug]">
+        <a [routerLink]="['/produit', produitDAO?.slug]">
             <img [attr.alt]="'Image:'+produitDAO?.designation" [src]="produitDAO?.imageUrl">
         </a>
         <div class="product_action_box">
@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="product_info">
-        <h6 class="product_title"><a [routerLink]="['/produitDAO', produitDAO?.slug]">{{produitDAO?.designation}}</a>
+        <h6 class="product_title"><a [routerLink]="['/produit', produitDAO?.slug]">{{produitDAO?.designation}}</a>
         </h6>
         <div class="product_price">
             <span class="price">{{produitDAO?.prixUnitaire! | formatMontant }}</span>
