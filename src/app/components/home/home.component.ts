@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { lastValueFrom, filter, map } from 'rxjs';
-import { CollectionModel } from '../../models/collection-model';
+import { filter, map } from 'rxjs';
 import { ProduitDAOModel } from '../../models/produitDAO.model ';
 import { ProductService } from '../../services/product.service';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { BannerService } from '../../services/banner.service';
 import { BannerDAO } from '../../models/banner-dao';
+import { CollectionDAO } from '../../models/collection-dao';
+import { CollectionService } from '../../services/collection.service';
 
 @Component({
   selector: 'app-home',
@@ -17,22 +18,7 @@ export class HomeComponent {
 
   banners: BannerDAO[] = [];
 
-  collections: CollectionModel[] = [
-    {
-      imageUrl: 'assets/imgBG/xiaomi1.png',
-      sous_titre: "Super Deal",
-      titre: "Xiaomi Tv Box S",
-      btn_text: "Voir plus",
-      btn_link: "/shop",
-    },
-    {
-      imageUrl: 'assets/imgBG/booster1.png',
-      sous_titre: "Achetez, soyez satisfait",
-      titre: "Booster de voiture",
-      btn_text: "Voir plus",
-      btn_link: "",
-    }
-  ];
+  collections: CollectionDAO[] = [];
 
   // products?: Array<ProduitDAOModel[]> = [];
   products: { [key: string]: ProduitDAOModel[] } = {};
@@ -44,6 +30,7 @@ export class HomeComponent {
   constructor(
     private produitService: ProductService,
     private bannerService: BannerService,
+    private collectionService: CollectionService,
     private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object,
   ) {
@@ -90,6 +77,27 @@ export class HomeComponent {
         },
         error => {
           console.error('Erreur lors du chargement des banner', error);
+          this.isLoading = false;
+        }
+      );
+
+      this.collectionService.listCollection()
+      .pipe(
+        map((collections: CollectionDAO[]) => collections.map(collection => ({
+          ...collection,
+          imageUrl: collection.idCollection ? this.collectionService.getMainImageUrl(collection.idCollection) : ''
+        })))
+      )
+      .subscribe(
+        data => {
+          this.collections = data.map(collection => ({
+            ...collection,
+            imageUrl: this.collectionService.getImageUrl(collection.idCollection!),
+          }));
+
+        },
+        error => {
+          console.error('Erreur lors du chargement des collection', error);
           this.isLoading = false;
         }
       );
