@@ -22,9 +22,6 @@ export class HeaderComponent {
     private panierService: PanierService,
   ) {}
 
-  // asynchronous initialization of component
-  // using lastValueFrom to convert observable to promise
-  // to handle the asynchronous nature of the data fetching
  async ngOnInit() {
   this.panierService.panier$.subscribe({
     next: (value:PanierDAOModel) => {

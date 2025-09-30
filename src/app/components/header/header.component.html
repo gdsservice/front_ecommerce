@@ -74,31 +74,32 @@
                             <a routerlink="/" class="nav-link" ng-reflect-router-link="/" href="/">ACCUEIL</a>
                         </li>
                         <li class="dropdown">
-                            <a href="#" data-bs-toggle="dropdown" class="dropdown-toggle nav-link active" aria-expanded="false">Pages</a>
-                                <div class="dropdown-menu">
-                                    <ul>
-                                        <li>
-                                            <a routerlink="/about" class="dropdown-item nav-link nav_item"
+                            <a href="#" data-bs-toggle="dropdown" class="dropdown-toggle nav-link active"
+                                aria-expanded="false">Pages</a>
+                            <div class="dropdown-menu">
+                                <ul>
+                                    <li>
+                                        <a routerlink="/about" class="dropdown-item nav-link nav_item"
                                             ng-reflect-router-link="/about" href="/about">A Propos de Nous</a>
-                                        </li>
-                                        <li>
-                                            <a routerlink="/contact" class="dropdown-item nav-link nav_item"
+                                    </li>
+                                    <li>
+                                        <a routerlink="/contact" class="dropdown-item nav-link nav_item"
                                             ng-reflect-router-link="/contact" href="/contact">Contactez nous</a>
-                                        </li>
-                                        <li><a routerlink="/fqa" class="dropdown-item nav-link nav_item"
+                                    </li>
+                                    <li><a routerlink="/fqa" class="dropdown-item nav-link nav_item"
                                             ng-reflect-router-link="/fqa" href="/fqa">Faq</a>
-                                        </li>
-                                        <li><a routerlink="/signin" class="dropdown-item nav-link nav_item"
-                                                ng-reflect-router-link="/signin" href="/signin">Connexion</a>
-                                        </li>
-                                        <li><a routerlink="/signup" class="dropdown-item nav-link nav_item"
-                                                ng-reflect-router-link="/signup" href="/signup">Inscription</a>
-                                        </li>
-                                        <li><a routerlink="/terms" class="dropdown-item nav-link nav_item"
-                                                ng-reflect-router-link="/terms" href="/terms">Termes et Conditions</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                    </li>
+                                    <li><a routerlink="/signin" class="dropdown-item nav-link nav_item"
+                                            ng-reflect-router-link="/signin" href="/signin">Connexion</a>
+                                    </li>
+                                    <li><a routerlink="/signup" class="dropdown-item nav-link nav_item"
+                                            ng-reflect-router-link="/signup" href="/signup">Inscription</a>
+                                    </li>
+                                    <li><a routerlink="/terms" class="dropdown-item nav-link nav_item"
+                                            ng-reflect-router-link="/terms" href="/terms">Termes et Conditions</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="dropdown dropdown-mega-menu"><a href="#" data-bs-toggle="dropdown"
                                 class="dropdown-toggle nav-link" aria-expanded="false">Produits</a>
@@ -106,17 +107,25 @@
                                 <ul class="mega-menu d-lg-flex">
                                     <li class="mega-menu-col col-lg-3" *ngFor="let categorie of categorieStock">
                                         <ul>
-                                            <li class="dropdown-header">{{categorie.categorieStock.nom}}</li>
-                                            <li *ngFor="let produit of categorie.produitList">
+                                            <li class="dropdown-header">{{ categorie.categorieStock.nom }}</li>
+
+                                            <li *ngFor="let produit of categorie.produitList | slice:0:10">
                                                 <a class="dropdown-item nav-link nav_item"
                                                     [routerLink]="['/','produit', produit.slug]">
                                                     {{ produit.designation }}
                                                 </a>
                                             </li>
+
+                                            <li *ngIf="categorie.produitList.length > 10">
+                                                <a class="dropdown-item nav-link nav_item fw-bold text-danger"
+                                                    [routerLink]="['shop','categorie', categorie.categorieStock.slug]">
+                                                    Voir plus…
+                                                </a>
+                                            </li>
                                         </ul>
                                     </li>
-                                </ul>
 
+                                </ul>
                             </div>
                         </li>
                         <li class="dropdown dropdown-mega-menu">
@@ -124,7 +133,7 @@
                         </li>
                         <li>
                             <a routerlink="/contact" class="nav-link nav_item" ng-reflect-router-link="/contact"
-                               href="/contact">Contactez nous</a>
+                                href="/contact">Contactez nous</a>
                         </li>
                     </ul>
                 </div>
@@ -177,14 +186,17 @@
                         <div class="cart_box dropdown-menu dropdown-menu-right">
                             <ul class="cart_list">
                                 <li *ngFor="let article of panier?.articles">
-                                    <a href="#" class="item_remove" (click)="removeFromCart($event, article.produitDAO, article.quantite)">
+                                    <a href="#" class="item_remove"
+                                        (click)="removeFromCart($event, article.produitDAO, article.quantite)">
                                         <i class="ion-close"></i>
                                     </a>
                                     <a [routerLink]="['/produitDAO', article.produitDAO?.slug]">
-                                        <img width="50" height="50" alt="cart_thumb1" [src]="article.produitDAO?.imageUrl">{{article.produitDAO?.designation}}</a>
+                                        <img width="50" height="50" alt="cart_thumb1"
+                                            [src]="article.produitDAO?.imageUrl">{{article.produitDAO?.designation}}</a>
                                     <span class="cart_quantity"> {{article.quantite}} x
                                         <span class="cart_amount">
-                                            <span class="price_symbole">{{article.produitDAO?.prixUnitaire! | formatMontant}} 
+                                            <span class="price_symbole">{{article.produitDAO?.prixUnitaire! |
+                                                formatMontant}}
                                             </span>
                                         </span>
                                     </span>
@@ -192,7 +204,7 @@
                             </ul>
                             <div class="cart_footer" *ngIf="panier?.articles?.length ">
                                 <p class="cart_total"><strong>Total articles:</strong><span class="cart_price"><span
-                                            class="price_symbole"></span></span>{{panier?.total! | formatMontant}}  </p>
+                                            class="price_symbole"></span></span>{{panier?.total! | formatMontant}} </p>
                                 <p class="cart_buttons"><a routerlink="/cart" class="btn btn-fill-line view-cart"
                                         ng-reflect-router-link="/cart" href="/cart">Voir le panier</a><a
                                         routerlink="/checkout" class="btn btn-fill-out checkout"

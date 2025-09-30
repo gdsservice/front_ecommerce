@@ -46,17 +46,18 @@
                                 </div><span class="rating_num">(21)</span>
                             </div>
                             <div class="pr_desc">
-                                <span [innerHTML]="shortDescription"></span>
+  <span *ngIf="isDescriptionCollapsed" class="truncate-text" [innerHTML]="shortDescription"></span>
+  <span *ngIf="!isDescriptionCollapsed" [innerHTML]="produitDAO.description"></span>
 
-                                <!-- Bouton Voir plus / Voir moins -->
-                                <p *ngIf="produitDAO.description && produitDAO.description.length > maxLength">
-                                    <a class="voirPlus"
-                                        (click)="isDescriptionCollapsed = !isDescriptionCollapsed; scrollToDescription()"
-                                        style="cursor: pointer;">
-                                        {{ isDescriptionCollapsed ? 'Voir plus' : 'Voir moins' }}
-                                    </a>
-                                </p>
-                            </div>
+  <p *ngIf="produitDAO.description && produitDAO.description.length > maxLength">
+    <a class="voirPlus"
+       (click)="isDescriptionCollapsed = !isDescriptionCollapsed; scrollToDescription()"
+       style="cursor: pointer;">
+      {{ isDescriptionCollapsed ? 'Voir plus' : 'Voir moins' }}
+    </a>
+  </p>
+</div>
+
 
                             <div class="product_sort_info">
                                 <ul>
