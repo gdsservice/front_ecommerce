@@ -1,10 +1,10 @@
-
-
-<div class="row shop_container">
+<div class="row justify-content-center shop_container">
   <div *ngIf="!produitDAO">Chargement...</div>
   <div *ngIf="produitDAO && produitDAO.length === 0">Aucun produit</div>
 
-  <div class="col-lg-3 col-md-4 col-6" *ngFor="let produit of produitDAO">
-    <app-product-item [produitDAO]="produit"></app-product-item>
+  <div *ngFor="let produit of produitDAO" class="col-lg-3 col-md-4 col-5 d-flex justify-content-center">
+    <div class="product-card">
+      <app-product-item [produitDAO]="produit"></app-product-item>
+    </div>
   </div>
 </div>
