@@ -57,19 +57,7 @@
     width: 100%;
 }
 
-#produits-similaires{
-    border-radius: 100px;
-}
-
 @media (max-width: 768px) {
-  /* Téléphone */
-  #card{
-   font-size: 10px;
- }
-
- .owl-stage{
-    width: 10%;
- }
- 
 }
+
 
