@@ -46,17 +46,18 @@
                                 </div><span class="rating_num">(21)</span>
                             </div>
                             <div class="pr_desc">
-  <span *ngIf="isDescriptionCollapsed" class="truncate-text" [innerHTML]="shortDescription"></span>
-  <span *ngIf="!isDescriptionCollapsed" [innerHTML]="produitDAO.description"></span>
+                                <span *ngIf="isDescriptionCollapsed" class="truncate-text"
+                                    [innerHTML]="shortDescription"></span>
+                                <span *ngIf="!isDescriptionCollapsed" [innerHTML]="produitDAO.description"></span>
 
-  <p *ngIf="produitDAO.description && produitDAO.description.length > maxLength">
-    <a class="voirPlus"
-       (click)="isDescriptionCollapsed = !isDescriptionCollapsed; scrollToDescription()"
-       style="cursor: pointer;">
-      {{ isDescriptionCollapsed ? 'Voir plus' : 'Voir moins' }}
-    </a>
-  </p>
-</div>
+                                <p *ngIf="produitDAO.description && produitDAO.description.length > maxLength">
+                                    <a class="voirPlus"
+                                        (click)="isDescriptionCollapsed = !isDescriptionCollapsed; scrollToDescription()"
+                                        style="cursor: pointer;">
+                                        {{ isDescriptionCollapsed ? 'Voir plus' : 'Voir moins' }}
+                                    </a>
+                                </p>
+                            </div>
 
 
                             <div class="product_sort_info">
@@ -248,13 +249,11 @@
                     <div class="heading_s1">
                         <h3>Produits Simulaires</h3>
                     </div>
-                    <div data-margin="20"
-                        data-responsive="{&quot;0&quot;:{&quot;items&quot;: &quot;1&quot;}, &quot;481&quot;:{&quot;items&quot;: &quot;2&quot;}, &quot;768&quot;:{&quot;items&quot;: &quot;3&quot;}, &quot;1199&quot;:{&quot;items&quot;: &quot;4&quot;}}"
-                        class="releted_product_slider carousel_slider owl-carousel owl-theme owl-loaded owl-drag">
+                    <div id="produits-similaires" data-margin="20" class="releted_product_slider carousel_slider owl-carousel owl-theme owl-loaded owl-drag">
                         <div class="owl-stage-outer">
                             <div class="owl-stage"
                                 style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1420px;">
-                                <div *ngFor="let currentProd of   produitRelative " class="owl-item active"
+                                <div *ngFor="let currentProd of paginatedProduits " class="owl-item active"
                                     style="width: 264px; margin-right: 20px;">
                                     <div class="item">
                                         <div class="product">
@@ -309,16 +308,32 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="owl-nav disabled">
+                        <!-- <div class="owl-nav disabled">
                             <button type="button" role="presentation" class="owl-prev">
                                 <i class="ion-ios-arrow-left"></i>
                             </button>
                             <button type="button" role="presentation" class="owl-next">
                                 <i class="ion-ios-arrow-right"></i>
                             </button>
+                        </div> -->
+                        <div class="pagination-container text-center mt-3">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item" [class.disabled]="currentPage === 1">
+                                    <a id="precedent" class="page-link" (click)="goToPage(currentPage - 1)">Précédent</a>
+                                </li>
+
+                                <li class="page-item" *ngFor="let page of [].constructor(totalPages); let i = index"
+                                    [class.active]="currentPage === i + 1">
+                                    <a class="page-link" (click)="goToPage(i + 1)">{{ i + 1 }}</a>
+                                </li>
+
+                                <li class="page-item" [class.disabled]="currentPage === totalPages">
+                                    <a id="Suivant" class="page-link" (click)="goToPage(currentPage + 1)">Suivant</a>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button
-                                role="button" class="owl-dot"><span></span></button></div>
+                        <!-- <div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button
+                                role="button" class="owl-dot"><span></span></button></div> -->
                     </div>
                 </div>
             </div>
