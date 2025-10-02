@@ -6,10 +6,13 @@
     #card-content .row {
   margin-left: -2px;
   margin-right: -2px;
-}
-#card-content .col-6 {
-  padding-left: 2px;
-  padding-right: 2px;
-}
+  }
+
+  #card-content .col-6 {
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
+  
 
 }
