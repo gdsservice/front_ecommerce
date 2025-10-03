@@ -25,6 +25,9 @@ export class HomeComponent {
 
   isLoading: boolean = true;
 
+  // Pagination
+  currentPage: { [key: string]: number } = {};
+  pageSize: number = 6;
 
 
   constructor(
@@ -81,7 +84,7 @@ export class HomeComponent {
         }
       );
 
-      this.collectionService.listCollection()
+    this.collectionService.listCollection()
       .pipe(
         map((collections: CollectionDAO[]) => collections.map(collection => ({
           ...collection,
@@ -102,4 +105,16 @@ export class HomeComponent {
         }
       );
   }
+
+  getPaginatedProducts(key: string): ProduitDAOModel[] {
+    const page = this.currentPage[key] || 1;
+    const products = this.products[key] || [];
+    const startIndex = (page - 1) * this.pageSize;
+    return products.slice(startIndex, startIndex + this.pageSize);
+  }
+
+  changePage(key: string, page: number) {
+    this.currentPage[key] = page;
+  }
+
 }

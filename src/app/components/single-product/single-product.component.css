@@ -1,4 +1,3 @@
-
 .pagination-container {
   margin-top: 20px;
 }
@@ -22,7 +21,7 @@
   padding: 8px 14px;
   border-radius: 6px;
   font-weight: 500;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
   cursor: pointer;
 }
@@ -46,27 +45,31 @@
   box-shadow: none;
 }
 
-#precedent{
-    width: 100%;
-    display: flex;
-    text-align: center;
-    justify-content: center;
+#precedent {
+  width: 100%;
 }
 
-#Suivant{
-    width: 100%;
+#Suivant {
+  width: 100%;
 }
 
 @media (max-width: 768px) {
-    #card-content .row {
-  margin-left: -2px;
-  margin-right: -2px;
-}
-#card-content .col-6 {
-  padding-left: 2px;
-  padding-right: 2px;
-}
+  #card-content .row {
+    margin-left: -2px;
+    margin-right: -2px;
+  }
+
+  #card-content .col-6 {
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
+  #precedent {
+    width: 100%;
+  }
+
+  #Suivant {
+    width: 100%;
+  }
 
 }
-
-
