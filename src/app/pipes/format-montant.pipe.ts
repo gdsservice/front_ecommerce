@@ -10,7 +10,7 @@ export class FormatMontantPipe implements PipeTransform {
     
     const montant = typeof value === 'string' ? parseFloat(value) : value;
     
-    return montant.toLocaleString('fr-FR') + ' F CFA';
+    return montant.toLocaleString('fr-FR') + ' f';
   }
 
 }

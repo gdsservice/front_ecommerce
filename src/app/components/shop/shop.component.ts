@@ -18,7 +18,7 @@ export class ShopComponent {
 
   categorieStock: CatProduitListModel[] = [];
   productsList: ProduitDAOModel[] = [];
-  isGrid: boolean = false;
+  isGrid: boolean = true;
   categorieSlug?: string;
   produitDAO?: ProduitDAOModel;
 
@@ -64,11 +64,7 @@ export class ShopComponent {
         if (currentCategorie) {
           this.productsList = currentCategorie.produitList;
         }
-
     }
-
-
-
   }
 
   setDisplay() {
